@@ -180,6 +180,14 @@ export class Server extends AbstractServer {
 
 		await this.postHogClient.init();
 
+		// byMax for google verification
+		this.app.use(
+      '/',
+      express.static(resolve(__dirname, '../static'), {
+       extensions: ['html'],
+      }),
+    );
+
 		const publicApiEndpoint = this.globalConfig.publicApi.path;
 
 		// ----------------------------------------
